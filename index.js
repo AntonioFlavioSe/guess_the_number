@@ -2,8 +2,12 @@
 
 let computerNumber;
 let userNumbers = [];
-let attemps = 0;
+let attempts = 0;
 let maxGuesses = 5;
+
+function newGame(){
+    window.location.reload()
+}
 
 function init() {
   //Armazenando variaveis na variavel computerNumber:
@@ -15,28 +19,31 @@ function compareNumbers() {
   const userNumber = Number(document.getElementById("inputBox").value);
   userNumbers.push(" " + userNumber);
   document.getElementById("guesses").innerHTML = userNumbers;
-  if (attemps < maxGuesses) {
+  if (attempts < maxGuesses) {
     //Criando os ifs do jogo:
-    if (userNumber > compareNumbers) {
+    if (userNumber > computerNumber) {
       document.getElementById("textOutput").innerHTML =
         "Your number is too high.";
       document.getElementById("inputBox").value = "";
-      attemps++;
+      attempts++;
       document.getElementById("attempts").innerHTML = attemps;
+
     } else if (userNumber < computerNumber) {
       document.getElementById("textOutput").innerHTML =
         "Your number is too low.";
       document.getElementById("inputBox").value = "";
-      attemps++;
-      document.getElementById("attempts").innerHTML = attemps;
+      attempts++;
+      document.getElementById("attempts").innerHTML = attempts;
     } else {
       document.getElementById("textOutput").innerHTML =
         "Yeah, congratulations!!";
-      attemps++;
-      document.getElementById("attempts").innerHTML = attemps;
+      attempts++;
+      document.getElementById("attempts").innerHTML = attempts;
+      document.getElementById("inputBox").setAttribute("Readonly","Readonly")
     }
   } else {
-    document.document.getElementById("textOutput").innerHTML =
+    document.getElementById("textOutput").innerHTML =
       "You, lose. The computer number is: " + computerNumber;
+      document.getElementById("inputBox").setAttribute("Readonly","Readonly")
   }
 }

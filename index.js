@@ -35,5 +35,8 @@ function compareNumbers() {
       attemps++;
       document.getElementById("attempts").innerHTML = attemps;
     }
+  } else {
+    document.document.getElementById("textOutput").innerHTML =
+      "You, lose. The computer number is: " + computerNumber;
   }
 }
